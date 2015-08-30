@@ -56,6 +56,13 @@ terms = [
     end_date: '2015-03-30',
     source: 'https://en.wikipedia.org/wiki/Tuvaluan_general_election,_2010',
   },
+  { 
+    id: 9,
+    name: '9th Parliament',
+    start_date: '2006-08-03',
+    end_date: '2010-09-16',
+    source: 'https://en.wikipedia.org/wiki/Tuvaluan_general_election,_2006',
+  },
 ]
 # ScraperWiki.save_sqlite([:id], terms, 'terms')
 
