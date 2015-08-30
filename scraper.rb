@@ -42,12 +42,21 @@ def scrape_term(t)
   end
 end
 
-terms = [{ 
-  id: 11,
-  name: '11th Parliament',
-  start_date: 2015,
-  source: 'https://en.wikipedia.org/wiki/Tuvaluan_general_election,_2015',
-}]
+terms = [
+  { 
+    id: 11,
+    name: '11th Parliament',
+    start_date: '2015-03-31',
+    source: 'https://en.wikipedia.org/wiki/Tuvaluan_general_election,_2015',
+  },
+  { 
+    id: 10,
+    name: '10th Parliament',
+    start_date: '2010-09-16',
+    end_date: '2015-03-30',
+    source: 'https://en.wikipedia.org/wiki/Tuvaluan_general_election,_2010',
+  },
+]
 # ScraperWiki.save_sqlite([:id], terms, 'terms')
 
 terms.each { |t| scrape_term(t) }
