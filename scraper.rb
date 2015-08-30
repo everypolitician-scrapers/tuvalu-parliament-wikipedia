@@ -22,6 +22,7 @@ def date_from(str)
 end
 
 def noko_for(url)
+  warn url
   Nokogiri::HTML(open(url).read)
   # Nokogiri::HTML(open(url).read, nil, 'utf-8')
 end
@@ -49,8 +50,7 @@ def scrape_term(t, changes)
       data[:end_date] = change[:start_date]
       data = [ data, change ]
     end
-    puts data
-  # ScraperWiki.save_sqlite([:id, :term], data)
+    ScraperWiki.save_sqlite([:name, :term], data)
   end
 end
 
@@ -94,7 +94,7 @@ terms = [
     source: 'https://en.wikipedia.org/wiki/Tuvaluan_general_election,_2006',
   },
 ]
-# ScraperWiki.save_sqlite([:id], terms, 'terms')
+ScraperWiki.save_sqlite([:id], terms, 'terms')
 
 changes = scrape_byelections('https://en.wikipedia.org/wiki/List_of_by-elections_in_Tuvalu')
 terms.each { |t| scrape_term(t, changes) }
