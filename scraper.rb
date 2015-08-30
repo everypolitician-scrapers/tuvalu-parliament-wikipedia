@@ -43,6 +43,7 @@ def scrape_term(t, changes)
       wikiname: who.attr('title').text,
       area: area,
       area_id: area_id(area),
+      party: 'Independent',
       term: t[:id],
       source: t[:source]
     }
@@ -64,6 +65,7 @@ def scrape_byelections(url)
       wikiname: who_to.attr('title').text,
       area: tds[0].text,
       area_id: area_id(tds[0].text),
+      party: 'Independent',
       start_date: date_from(tds[1].text),
       replaced: tds[3].text,
       term: 10,
