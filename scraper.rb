@@ -36,8 +36,7 @@ def scrape_term(t, changes)
   noko.css('a[href*="Symbol_confirmed"]').each do |a|
     tds = a.xpath('ancestor::tr/td')
     area = a.xpath('ancestor::table//th[contains(.,"constituency results")]/a').text
-    who = tds[1].css('a[href*="/wiki/"]')
-
+    who = tds[2].css('a[href*="/wiki/"]')
     data = { 
       name: who.text,
       wikiname: who.attr('title').text,
