@@ -96,7 +96,6 @@ terms = [
     source: 'https://en.wikipedia.org/wiki/Tuvaluan_general_election,_2006',
   },
 ]
-ScraperWiki.save_sqlite([:id], terms, 'terms')
 
 changes = scrape_byelections('https://en.wikipedia.org/wiki/List_of_by-elections_in_Tuvalu')
 terms.each { |t| scrape_term(t, changes) }
