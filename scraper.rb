@@ -24,7 +24,6 @@ end
 def noko_for(url)
   warn url
   Nokogiri::HTML(open(url).read)
-  #  Nokogiri::HTML(open(url).read, nil, 'utf-8')
 end
 
 def area_id(area)
