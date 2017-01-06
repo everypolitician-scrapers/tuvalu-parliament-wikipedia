@@ -96,5 +96,6 @@ terms = [
   },
 ]
 
+ScraperWiki.sqliteexecute('DELETE FROM data') rescue nil
 changes = scrape_byelections('https://en.wikipedia.org/wiki/List_of_by-elections_in_Tuvalu')
 terms.each { |t| scrape_term(t, changes) }
