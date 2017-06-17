@@ -50,7 +50,7 @@ def scrape_term(t, changes)
       data[:end_date] = change[:start_date]
       data = [data, change]
     end
-    ScraperWiki.save_sqlite(%i(name term), data)
+    ScraperWiki.save_sqlite(%i[name term], data)
   end
 end
 
@@ -59,7 +59,7 @@ def scrape_byelections(url)
   noko.xpath('//h2[contains(.,"Tenth Parliament")]/following-sibling::table//tr[td[a]]').map do |tr|
     tds = tr.css('td')
     who_to = tds[5].css('a[href*="/wiki/"]')
-    data = {
+    {
       name:       who_to.text,
       wikiname:   who_to.attr('title').text,
       area:       tds[0].text,
