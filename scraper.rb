@@ -47,7 +47,7 @@ def scrape_term(t, changes)
   end
 end
 
-def scrape_byelections(url)
+def byelections(url)
   noko = noko_for(url)
   noko.xpath('//h2[contains(.,"Tenth Parliament")]/following-sibling::table//tr[td[a]]').map do |tr|
     tds = tr.css('td')
@@ -90,5 +90,5 @@ terms = [
 ]
 
 ScraperWiki.sqliteexecute('DELETE FROM data') rescue nil
-changes = scrape_byelections('https://en.wikipedia.org/wiki/List_of_by-elections_in_Tuvalu')
+changes = byelections('https://en.wikipedia.org/wiki/List_of_by-elections_in_Tuvalu').compact
 terms.each { |t| scrape_term(t, changes) }
