@@ -42,7 +42,7 @@ def scrape_term(t, changes)
       data[:end_date] = change[:start_date]
       data = [data, change]
     end
-    puts data.reject { |_, v| v.to_s.empty? }.sort_by { |k, _| k }.to_h if ENV['MORPH_DEBUG']
+    [data].flatten.each { |mem| puts mem.reject { |_, v| v.to_s.empty? }.sort_by { |k, _| k }.to_h } if ENV['MORPH_DEBUG']
     ScraperWiki.save_sqlite(%i[name term], data)
   end
 end
