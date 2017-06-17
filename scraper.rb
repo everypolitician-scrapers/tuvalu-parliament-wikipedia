@@ -52,6 +52,7 @@ def byelections(url)
   noko.xpath('//h2[contains(.,"Tenth Parliament")]/following-sibling::table//tr[td[a]]').map do |tr|
     tds = tr.css('td')
     who_to = tds[5].css('a[href*="/wiki/"]')
+    next if who_to.empty?
     {
       name:       who_to.text,
       wikiname:   who_to.attr('title').text,
