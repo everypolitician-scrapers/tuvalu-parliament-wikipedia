@@ -26,12 +26,12 @@ def scrape_term(t, changes)
   noko = noko_for(t[:source])
   noko.css('a[href*="Symbol_confirmed"]').each do |a|
     tds = a.xpath('ancestor::tr/td')
-    area = a.xpath('ancestor::table//caption[contains(.,"constituency results")]/a').text
+    area = a.xpath('ancestor::table//caption[contains(.,"constituency results")]/a').text.tidy
     who = tds[2].css('a[href*="/wiki/"]')
 
     data = {
-      name:     who.text,
-      wikiname: who.attr('title').text,
+      name:     who.text.tidy,
+      wikiname: who.attr('title').text.tidy,
       area:     area,
       area_id:  area_id(area),
       party:    'Independent',
@@ -54,13 +54,13 @@ def byelections(url)
     who_to = tds[5].css('a[href*="/wiki/"]')
     next if who_to.empty?
     {
-      name:       who_to.text,
-      wikiname:   who_to.attr('title').text,
-      area:       tds[0].text,
-      area_id:    area_id(tds[0].text),
+      name:       who_to.text.tidy,
+      wikiname:   who_to.attr('title').text.tidy,
+      area:       tds[0].text.tidy,
+      area_id:    area_id(tds[0].text.tidy),
       party:      'Independent',
-      start_date: date_from(tds[1].text),
-      replaced:   tds[3].text,
+      start_date: date_from(tds[1].text.tidy),
+      replaced:   tds[3].text.tidy,
       term:       10,
       source:     url,
     }
